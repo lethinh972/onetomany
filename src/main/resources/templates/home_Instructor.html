@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>index</title>
+<link rel="shortcut icon" type="image/png" href="@../../../../../../css/form.css"/>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+<body>
+
+
+
+<div style="width: 1519.2px;height: 100px;display: flex;">
+
+	<div style="margin-top: 33px;width: 759.6px">
+        <a th:href="@{/instructor/createInstructor}"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">new Instructor</button></a>
+	</div>
+
+</div>
+
+
+	<table class="table">
+		<thead class="thead-dark">
+			<tr>
+				<th>stt</th>
+				<th>Email</th>
+				<th>FirtName</th>
+				<th>LastName</th>
+				<th>Update</th>
+				<th>Add Course</th>
+				<th>List Course</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="u,iterStat : ${list}">
+				<td th:text="${iterStat.count}"></td>
+				<td th:text="${u.email}"></td>
+				<td th:text="${u.firts_name}"></td>
+				<td th:text="${u.last_name}"></td>
+				<td><a th:href="@{/instructor/updateInstructor{id}(id=${u.id})}">Update</a></td>
+				<td><a th:href="@{/instructor/addcourse{id}(id=${u.id})}">Add course</a></td>
+				<td><a th:href="@{/instructor/viewCourse{id}(id=${u.id})}">Views</a></td>
+				<td><a th:href="@{/instructor/deleteInstructor{id}(id=${u.id})}" onclick="if(!(confirm('Ban co chac chan muon xoa khong?'))) return false">Delete</a></td>
+			</tr>
+		</tbody>
+	</table>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>
